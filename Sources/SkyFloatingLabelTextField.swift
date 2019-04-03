@@ -171,6 +171,15 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
         }
     }
 
+    // MARK: Line corner radius
+   
+        @IBInspectable dynamic open var lineCornerRadius: CGFloat = 0 {
+            didSet {
+                updateLineView()
+                setNeedsDisplay()
+            }
+        }
+    
     // MARK: Line height
 
     /// A CGFloat value that determines the height for the bottom line when the control is in the normal state
@@ -424,6 +433,7 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
         }
 
         lineView.frame = lineViewRectForBounds(bounds, editing: editingOrSelected)
+        lineView.layer.cornerRadius = lineCornerRadius
         updateLineColor()
     }
 
